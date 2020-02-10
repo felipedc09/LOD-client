@@ -15,7 +15,7 @@ export default class ErrorManager extends Component {
         };
         this.closeNotification = this.closeNotification.bind(this)
     }
-
+    
     componentDidMount() {
         this.formatErrorMesagge(this.props.error)
         this.showNotification(this.props.error.status)
@@ -49,8 +49,8 @@ export default class ErrorManager extends Component {
     }
 
     async formatErrorMesagge(error) {
-        const message = await error.json()
-        this.setState(message)
+        let message = error.message ? error.message : await error.json()
+        this.setState({message})
     }
 
     closeNotification() {
