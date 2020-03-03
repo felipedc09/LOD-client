@@ -28,7 +28,6 @@ class Instances extends Component {
     }
 
     render() {
-        console.log(this.state)
         const { error, isLoading, instances } = this.state
         const { classes } = this.props;
         if (isLoading) {

@@ -3,6 +3,7 @@ import ReactTable from "react-table";
 import { hostUrl } from "../../utilities/request";
 import ErrorManager from "../../utilities/ErrorManager/errorManager";
 import Loading from "../../utilities/Loading/loading";
+import Table from "../../utilities/table";
 import "react-table/react-table.css";
 
 export default class Datasets extends Component {
@@ -22,11 +23,10 @@ export default class Datasets extends Component {
     if (instanceSelected) {
       this.getDatasets(instanceSelected.name);
     }
-    this.loadDatasets();
+    // this.loadDatasets();
   }
 
   render() {
-    console.log(this.state.instanceSelected);
     const { error, isLoading, data, columns } = this.state;
     if (isLoading) {
       return <Loading />;
@@ -34,19 +34,20 @@ export default class Datasets extends Component {
     if (error) {
       return <ErrorManager error={error} place={"tc"} />;
     }
-    return <ReactTable data={data.nodes} columns={columns} />;
+    // return <ReactTable data={data.nodes} columns={columns} />;
+    return  <Table title={"Attributes"} data={data} filters={['id', 'title', 'metadata_created', 'private', 'isopen', 'license_title', 'download_url', 'state', 'type', 'num_resources', 'ckan_url', 'organization', 'owner_org']}/>
   }
 
   async getDatasets(instanceName) {
     try {
-      const res = await fetch(`${hostUrl}instance/${instanceName}/graphic`);
+      const res = await fetch(`${hostUrl}instances/${instanceName}`);
       if (!res.ok) {
         throw res;
       }
       const data = await res.json();
       this.setState({
         isLoading: false,
-        data: data.datasets
+        data
       });
     } catch (error) {
       this.setState({ error, isLoading: false });

@@ -49,8 +49,9 @@ export default class ErrorManager extends Component {
     }
 
     async formatErrorMesagge(error) {
-        let message = error.message ? error.message : await error.json()
-        this.setState({message})
+        console.log('***', error)
+        let errorFormated = error.message ? error : await error.json()
+        this.setState({message : errorFormated.message})
     }
 
     closeNotification() {

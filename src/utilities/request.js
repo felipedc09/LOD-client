@@ -1,1 +1,1 @@
-export const hostUrl = "https://lod-cloud-server.herokuapp.com/";
+export const hostUrl = "http://localhost:8080/";
