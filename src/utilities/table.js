@@ -54,7 +54,9 @@ export default function Table(props) {
   function getColumns(records) {
     const columns = []
     for (const key in records[0]) {
-      columns.push({ title: key.replace('_', ' '), field: key })
+      if(typeof(records[0][key]) !== 'object'){
+        columns.push({ title: key.replace('_', ' '), field: key })
+      }
     }
     return columns.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
   }
