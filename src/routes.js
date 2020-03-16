@@ -17,35 +17,40 @@ const dashboardRoutes = [
     name: "About",
     icon: Dashboard,
     component: About,
-    layout: "/admin"
+    layout: "/admin",
+    active: true
   },
   {
     path: "/instances",
     name: "Instances",
     icon: Data,
     component: Instances,
-    layout: "/admin"
+    layout: "/admin",
+    active: true
   },
   {
     path: "/datasets",
     name: "Datasets",
     icon: Table,
     component: Datasets,
-    layout: "/admin"
+    layout: "/admin",
+    active: false
   },
   {
     path: "/analitycs",
     name: "Analitycs",
     icon: BarChart,
     component: Analitycs,
-    layout: "/admin"
+    layout: "/admin",
+    active: false
   },
   {
     path: "/graphics",
     name: "Graphics",
     icon: BubbleChart,
     component: Visualization,
-    layout: "/admin"
+    layout: "/admin",
+    active: false
   }
 ];
 
