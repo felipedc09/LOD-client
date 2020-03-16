@@ -23,7 +23,6 @@ export default class Datasets extends Component {
     if (instanceSelected) {
       this.getDatasets(instanceSelected.name);
     }
-    // this.loadDatasets();
   }
 
   render() {

@@ -21,6 +21,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import tooltipStyle from "assets/jss/material-dashboard-react/tooltipStyle";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle";
 import { addInstance, instances } from "./instancesView.module.css";
+import { Link } from "react-router-dom";
 
 var styles = {
   ...dashboardStyle,
@@ -113,7 +114,9 @@ function instanceCard(props) {
       </CardHeader>
       <CardBody>
         <p>Metadata...</p>
-        <Button color="info">Go datasets</Button>
+        <Button color="info" onClick={()=>props.updateInstance(instance)} component={Link} to={"datasets"}>
+          Go datasets
+        </Button>
       </CardBody>
       <CardFooter>
         {renderClassificationsDatasets({

@@ -29,7 +29,6 @@ class Instances extends Component {
 
     render() {
         const { error, isLoading, instances } = this.state
-        const { classes } = this.props;
         if (isLoading) {
             return <Loading />
         }
@@ -37,7 +36,12 @@ class Instances extends Component {
             return <ErrorManager error={error} place={'tc'} />
         }
         return (
-            <InstancesView instances={instances} postInstance={this.postInstance} updateField={this.updateField} classes={classes} selectedInstance={this.state.selectedInstance} updateInstance={this.updateInstance} />
+            <InstancesView 
+            instances={instances} 
+            postInstance={this.postInstance} 
+            updateField={this.updateField} 
+            selectedInstance={this.state.selectedInstance}
+            updateInstance={this.updateInstance} />
         );
     }
 

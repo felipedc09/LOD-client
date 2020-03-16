@@ -55,7 +55,7 @@ export default class Analytics extends Component {
       }
       const data = await res.json();
       this.setState({
-        instanceMetadata: data.packages,
+        instanceMetadata: data,
         isLoading: false
       });
     } catch (error) {
