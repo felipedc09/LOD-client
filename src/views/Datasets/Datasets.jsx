@@ -1,10 +1,18 @@
 import React, { Component } from "react";
-import ReactTable from "react-table";
 import { hostUrl } from "../../utilities/request";
 import ErrorManager from "../../utilities/ErrorManager/errorManager";
 import Loading from "../../utilities/Loading/loading";
 import Table from "../../utilities/table";
-import "react-table/react-table.css";
+
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+// @material-ui/icons
+import Face from "@material-ui/icons/Face";
+import Chat from "@material-ui/icons/Chat";
+import Build from "@material-ui/icons/Build";
+// core components
+import Accordeon from "components/Accordeon/Accordeon";
+import Tabs from "components/CustomTabs/CustomTabs";
 
 export default class Datasets extends Component {
   constructor(props) {
@@ -26,15 +34,201 @@ export default class Datasets extends Component {
   }
 
   render() {
-    const { error, isLoading, data, columns } = this.state;
+    const { error, isLoading } = this.state;
     if (isLoading) {
       return <Loading />;
     }
     if (error) {
       return <ErrorManager error={error} place={"tc"} />;
     }
-    // return <ReactTable data={data.nodes} columns={columns} />;
-    return  <Table title={"Attributes"} data={data} filters={['id', 'title', 'metadata_created', 'private', 'isopen', 'license_title', 'download_url', 'state', 'type', 'num_resources', 'ckan_url', 'organization', 'owner_org']}/>
+    return <Tabs headerColor="info" tabs={this.getDataTabs({...this.state, ...this.props})} />;
+  }
+
+  getDataTabs(props) {
+    return [
+      {
+        tabName: "Accessibility",
+        tabIcon: Face,
+        tabContent: this.getAccessibilityData(props)
+      },
+      {
+        tabName: "Reuse",
+        tabIcon: Chat,
+        tabContent: this.getReuseData(props)
+      },
+      {
+        tabName: "Update",
+        tabIcon: Build,
+        tabContent: this.getUpdateData(props)
+      },
+      {
+        tabName: "Licences",
+        tabIcon: Build,
+        tabContent: this.getLicencesData(props)
+      },
+      {
+        tabName: "Notes",
+        tabIcon: Build,
+        tabContent: this.getNotesData(props)
+      },
+      {
+        tabName: "All data",
+        tabIcon: Build,
+        tabContent: this.getAllData(props)
+      }
+    ];
+  }
+
+  getAccessibilityData(props) {
+    const matadataSection = [
+      {
+        title: "Collapsible group Item #1",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #2",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #3",
+        content:
+          "Anim "
+      }
+    ]
+    return this.createAccordionData({data:matadataSection})
+  }
+
+  getReuseData(props) {
+    const matadataSection = [
+      {
+        title: "Collapsible group Item #1",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #2",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #3",
+        description: "description",
+        content:
+          "Anim "
+      }
+    ]
+    return this.createAccordionData({data:matadataSection})
+  }
+
+  getUpdateData(props) {
+    const matadataSection = [
+      {
+        title: "Collapsible group Item #1",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #2",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #3",
+        description: "description",
+        content:
+          "Anim "
+      }
+    ]
+    return this.createAccordionData({data:matadataSection})
+  }
+
+  getLicencesData(props) {
+    const matadataSection = [
+      {
+        title: "Collapsible group Item #1",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #2",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #3",
+        description: "description",
+        content:
+          "Anim "
+      }
+    ]
+    return this.createAccordionData({data:matadataSection})
+  }
+
+  getNotesData(props) {
+    const matadataSection = [
+      {
+        title: "Collapsible group Item #1",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #2",
+        description: "description",
+        content:
+          "Anim "
+      },
+      {
+        title: "Collapsible group Item #3",
+        description: "description",
+        content:
+          "Anim "
+      }
+    ]
+
+    return this.createAccordionData({data:matadataSection})
+  }
+
+  createAccordionData(props) {
+    return (
+      <Accordeon
+        items={props.data}
+      />
+    );
+  }
+
+  getAllData(props) {
+    const {data} = props
+    return (
+      <Table
+        title={"Attributes"}
+        data={data}
+        filters={[
+          "id",
+          "title",
+          "metadata_created",
+          "private",
+          "isopen",
+          "license_title",
+          "download_url",
+          "state",
+          "type",
+          "num_resources",
+          "ckan_url",
+          "organization",
+          "owner_org"
+        ]}
+      />
+    );
   }
 
   async getDatasets(instanceName) {
