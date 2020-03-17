@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
-import "react-table/react-table.css";
 
 export default class Piechart extends Component {
   constructor(props) {
