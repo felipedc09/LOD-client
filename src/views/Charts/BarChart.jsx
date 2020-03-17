@@ -15,11 +15,12 @@ export default class Barchart extends Component {
   }
 
   componentDidMount() {
-    if (this.state.option === "license") {
+    const {option} = this.state.option.value
+    if (option === "license") {
       this.processLicense();
-    } else if (this.state.option === "resources") {
+    } else if (option === "resources") {
       this.processResources();
-    } else if (this.state.option === "relationships") {
+    } else if (option === "relationships") {
       this.processRelationships();
     }
   }
@@ -62,21 +63,22 @@ export default class Barchart extends Component {
     let obj_rel = 0;
     let sub_rel = 0;
     let tempArray = [];
-
+    console.log('-----------', this.state.data)
     for (let obj of this.state.data) {
-      if (
-        obj.relationships_as_object.length > 0 ||
-        obj.relationships_as_subject.length > 0
-      ) {
-        let temp = {
-          title: obj.title,
-          obj_rel: obj.relationships_as_object.length,
-          sub_rel: obj.relationships_as_subject.length
-        };
-        tempArray.push(temp);
+      if(obj.relationships_as_object && obj.relationships_as_subject){
+        if (obj.relationships_as_object.length > 0 ||
+          obj.relationships_as_subject.length > 0
+        ) {
+          let temp = {
+            title: obj.title,
+            obj_rel: obj.relationships_as_object.length,
+            sub_rel: obj.relationships_as_subject.length
+          };
+          tempArray.push(temp);
+        }
+        obj_rel += obj.relationships_as_object.length
+        sub_rel += obj.relationships_as_subject.length
       }
-      obj_rel += obj.relationships_as_object.length;
-      sub_rel += obj.relationships_as_subject.length;
     }
     this.setState({ specific_data: tempArray });
 

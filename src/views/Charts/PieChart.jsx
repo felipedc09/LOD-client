@@ -15,7 +15,7 @@ export default class Piechart extends Component {
   }
 
   componentDidMount() {
-    this.actionProcess();
+    this.getDataToGraphic(this.state);
   }
 
   render() {
@@ -49,6 +49,41 @@ export default class Piechart extends Component {
         />
       </React.Fragment>
     );
+  }
+
+  getDataToGraphic(props) {
+    const { data: datasets, option } = props;
+    const optionValues = {};
+    for (const dataset of datasets) {
+      if (dataset.hasOwnProperty(option.value)) {
+        this.incrementOptionValue({
+          optionValues,
+          fieldValue: dataset[option.value]
+        });
+      }
+    }
+    this.getChartData({optionValues, option})
+  }
+
+  incrementOptionValue(props) {
+    const { optionValues, fieldValue } = props;
+    if (optionValues.hasOwnProperty(fieldValue)) {
+      optionValues[fieldValue] += 1;
+    } else {
+      optionValues[fieldValue] = 1;
+    }
+  }
+
+  getChartData(props) {
+    const { optionValues, option } = props;
+    const output_arr = [[option.title, "Count"]];
+    for (const key in optionValues) {
+      output_arr.push([key, optionValues[key]]);
+    }
+    console.log('**************', output_arr)
+    this.setState({
+      graph_data: output_arr
+    });
   }
 
   actionProcess() {
