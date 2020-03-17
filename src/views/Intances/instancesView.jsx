@@ -114,7 +114,12 @@ function instanceCard(props) {
       </CardHeader>
       <CardBody>
         <p>Metadata...</p>
-        <Button color="info" onClick={()=>props.updateInstance(instance)} component={Link} to={"datasets"}>
+        <Button
+          color="info"
+          onClick={() => props.updateInstance(instance)}
+          component={Link}
+          to={"datasets"}
+        >
           Go datasets
         </Button>
       </CardBody>
@@ -159,11 +164,12 @@ function getAspectStateIcon(props) {
       title={aspect.name + " " + aspect.state * 100 + "%"}
       placement="bottom"
       classes={{ tooltip: classes.tooltipStyle }}
-      arrow
     >
-      <Button justIcon round color={colorState}>
-        {iconState}
-      </Button>
+      <IconButton aria-label={aspect.name}>
+        <Button justIcon round color={colorState}>
+          {iconState}
+        </Button>
+      </IconButton>
     </Tooltip>
   );
 }
