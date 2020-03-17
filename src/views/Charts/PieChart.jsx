@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
-import ReactTable from "react-table";
 import "react-table/react-table.css";
 
 export default class Piechart extends Component {
@@ -32,7 +31,7 @@ export default class Piechart extends Component {
           }}
           rootProps={{ "data-testid": "1" }}
         />
-        <ReactTable
+        {/* <ReactTable
           data={this.state.specific_data}
           columns={[
             {
@@ -46,7 +45,7 @@ export default class Piechart extends Component {
           ]}
           defaultPageSize={10}
           className="-striped -highlight"
-        />
+        /> */}
       </React.Fragment>
     );
   }

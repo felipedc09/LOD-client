@@ -1,7 +1,7 @@
 import React from "react";
 import PieChart from "../Charts/PieChart";
 import BarChart from "../Charts/BarChart";
-import ReactTable from "react-table";
+// import ReactTable from "react-table";
 
 // @material-ui/icons
 import Business from "@material-ui/icons/Business";
@@ -87,36 +87,6 @@ function getCharts(props, option) {
     case "resources":
     case "relationships":
       return <BarChart data={props.instanceMetadata} option={option.value} />;
-    case "gen_table":
-      return (
-        <ReactTable
-          data={props.instanceMetadata}
-          columns={[
-            {
-              Header: "Titulo",
-              accessor: "title"
-            },
-            {
-              Header: "Autor",
-              accessor: "author"
-            },
-            {
-              Header: "Fecha modificacion",
-              accessor: "metadata_modified"
-            },
-            {
-              Header: "Organizacion",
-              accessor: "organization_description"
-            },
-            {
-              Header: "Numero de recursos",
-              accessor: "resources.length"
-            }
-          ]}
-          defaultPageSize={10}
-          className="-striped -highlight"
-        />
-      );
     default:
       break;
   }
