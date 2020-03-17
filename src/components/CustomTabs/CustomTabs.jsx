@@ -23,6 +23,7 @@ import PropTypes from "prop-types";
 
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
+import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 // core components
@@ -36,9 +37,11 @@ class CustomTabs extends React.Component {
   state = {
     value: 0
   };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
+
   render() {
     const {
       classes,
@@ -66,7 +69,7 @@ class CustomTabs extends React.Component {
               indicator: classes.displayNone,
               scrollButtons: classes.displayNone
             }}
-            variant="scrollable"
+            variant="fullWidth"
             scrollButtons="auto"
           >
             {tabs.map((prop, key) => {
