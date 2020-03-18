@@ -16,7 +16,6 @@ import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import MoodIcon from "@material-ui/icons/Mood";
 import MoodBadIcon from "@material-ui/icons/MoodBad";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import tooltipStyle from "assets/jss/material-dashboard-react/tooltipStyle";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle";

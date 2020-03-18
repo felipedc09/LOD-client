@@ -72,6 +72,7 @@ const Sidebar = ({ ...props }) => {
             </NavLink>
           );
         }
+        return <div></div>
       })}
     </List>
   );

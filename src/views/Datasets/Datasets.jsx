@@ -6,10 +6,7 @@ import PieChart from "../Charts/PieChart";
 import BarChart from "../Charts/BarChart";
 import Table from "../../utilities/table";
 
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import Business from "@material-ui/icons/Business";
 import AssignmentInd from "@material-ui/icons/AssignmentInd";
 import Copyright from "@material-ui/icons/Copyright";
 import FindInPage from "@material-ui/icons/FindInPage";

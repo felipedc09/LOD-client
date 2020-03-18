@@ -157,7 +157,7 @@ export default function Table(props) {
         error: error
       })
     }
-  }, [props.filters, props.url])
+  }, [props.filters, props.url, props.data])
 
   if (!state.data) {
     return <CircularProgress />;

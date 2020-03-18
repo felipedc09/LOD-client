@@ -23,7 +23,6 @@ import PropTypes from "prop-types";
 
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 // core components
