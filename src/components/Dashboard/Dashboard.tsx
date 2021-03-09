@@ -1,6 +1,5 @@
 import React from "react";
 import { Divider, IconButton, TextField } from "@material-ui/core";
-import InstanceList from "@/components/InstanceList/InstanceList";
 import { MdAddBox } from "react-icons/md";
 import useStyles from "./dashboard.styles";
 

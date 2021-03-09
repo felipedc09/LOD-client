@@ -3,7 +3,7 @@ import Error from "@/components/Error/Error";
 import InstanceList from "@/components/InstanceList/InstanceList";
 import Layout from "@/components/Layout";
 import { GetStaticProps } from "next";
-import { getInstances } from "./api/instances";
+import { getInstances } from "./api/instances/instances.request";
 
 type Props = {
   instances?: Instance[];
