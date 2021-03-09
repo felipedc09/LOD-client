@@ -1,10 +1,10 @@
 import React from "react";
 
 type Props = {
-  instance: InstanceDetail;
+  packages: Package[];
 };
-const InstanceDetail = ({ instance }: Props) => {
-  return <div>isntance detail {JSON.stringify(instance)}</div>;
+const InstanceDetail = ({ packages }: Props) => {
+  return <div>isntance detail {packages.length}</div>;
 };
 
 export default InstanceDetail;

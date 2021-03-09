@@ -17,10 +17,10 @@ const InstanceCard = (props: Props) => {
     <Card title={instance.name} subHeader={instance.url} footer={<Rating />}>
       <>
         <Typography variant="body2" color="textSecondary">
-          Other data
+          Number of packages: {instance.packagesCount}
         </Typography>
-        <Link href={`/instances/${instance.name}`}>
-          <a>details...</a>
+        <Link href={`/instances/${instance._id}`}>
+          <a>More details...</a>
         </Link>
       </>
     </Card>
