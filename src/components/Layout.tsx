@@ -1,6 +1,8 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Footer from "./Footer/Footer";
+import { Container } from "@material-ui/core";
 
 type Props = {
   children?: ReactNode;
@@ -8,7 +10,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "LOD - Ckan analyzer" }: Props) => (
-  <div>
+  <Container>
     <Head>
       <title>LOD - {title}</title>
     </Head>
@@ -24,11 +26,8 @@ const Layout = ({ children, title = "LOD - Ckan analyzer" }: Props) => (
       </nav>
     </header>
     {children}
-    <footer>
-      <hr />
-      <span>LOD - Ckan analyzer</span>
-    </footer>
-  </div>
+    <Footer />
+  </Container>
 );
 
 export default Layout;
