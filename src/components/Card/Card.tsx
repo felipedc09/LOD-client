@@ -5,7 +5,6 @@ import {
   CardContent,
   CardHeader,
   IconButton,
-  Typography,
 } from "@material-ui/core";
 import { MdMoreVert } from "react-icons/md";
 import useStyles from "./card.styles";

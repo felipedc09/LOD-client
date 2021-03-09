@@ -1,9 +1,10 @@
 import { makeStyles } from "@material-ui/core";
 
- const useStyles = makeStyles({
+ const useStyles = makeStyles((theme)=>({
     root: {
-        maxWidth: 345,
+        backgroundColor: 'rgb(245,245,245)',
+        boxShadow: theme.shadows[1]
       },
-  });
+  }));
 
   export default useStyles
