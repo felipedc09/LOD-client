@@ -1,13 +1,12 @@
 import { makeStyles } from "@material-ui/core";
 
- const useStyles = makeStyles({
-    root: {
+ const useStyles = makeStyles((theme)=>({
+    list: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gridGap: '15px', 
-      padding: '15px',
-      backgroundColor: 'rgb(100,200,200)',
+      gridGap: theme.spacing(2), 
+      padding: theme.spacing(1),
       },
-  });
+  }));
 
   export default useStyles
