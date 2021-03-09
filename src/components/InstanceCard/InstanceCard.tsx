@@ -19,7 +19,7 @@ const InstanceCard = (props: Props) => {
         <Typography variant="body2" color="textSecondary">
           Other data
         </Typography>
-        <Link href="/">
+        <Link href={`instances/${instance.name}`}>
           <a>details...</a>
         </Link>
       </>
