@@ -1,4 +1,4 @@
-import { Box, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Link from "next/link";
 import React from "react";
 import Card from "../Card/Card";
@@ -19,7 +19,7 @@ const InstanceCard = (props: Props) => {
         <Typography variant="body2" color="textSecondary">
           Other data
         </Typography>
-        <Link href={`instances/${instance.name}`}>
+        <Link href={`/instances/${instance.name}`}>
           <a>details...</a>
         </Link>
       </>
