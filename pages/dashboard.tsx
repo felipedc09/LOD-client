@@ -1,26 +1,39 @@
-import { Divider, IconButton, TextField } from "@material-ui/core";
-import Link from "next/link";
-import { MdAddBox } from "react-icons/md";
-import Layout from "@/components/Layout";
+import Dashboard from "@/components/Dashboard/Dashboard";
+import Error from "@/components/Error/Error";
 import InstanceList from "@/components/InstanceList/InstanceList";
+import Layout from "@/components/Layout";
+import { GetStaticProps } from "next";
+import { getInstances } from "./api/instances";
 
-const DashboardPage = () => (
-  <Layout title="Dashboard">
-    <h1>Ckan Repositories</h1>
-    <form noValidate autoComplete="off">
-      <IconButton aria-label="delete">
-        <MdAddBox />
-      </IconButton>
-      <TextField id="add-instance" label="Instance URL" variant="outlined" />
-    </form>
-    <Divider variant="middle" />
-    <InstanceList />
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </Layout>
-);
+type Props = {
+  instances?: Instance[];
+  error?: CustomError;
+};
+
+const DashboardPage = ({ instances, error }: Props) => {
+  if (error) {
+    return (
+      <Layout title="Error | Instance">
+        <Error error={error} />
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout title="Dashboard">
+      <Dashboard />
+      {instances && <InstanceList instances={instances} />}
+    </Layout>
+  );
+};
 
 export default DashboardPage;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  try {
+    const instances = await getInstances();
+    return { props: { instances } };
+  } catch (error) {
+    return { props: { error } };
+  }
+};
