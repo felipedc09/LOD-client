@@ -4,8 +4,8 @@
   "description": "Cliente to analize Ckan repositories",
   "scripts": {
     "dev": "next",
-    "build": "next start -p $PORT",
-    "start": "next start",
+    "build": "next build",
+    "start": "next start -p $PORT",
     "type-check": "tsc"
   },
   "repository": {
